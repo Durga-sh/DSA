@@ -25,8 +25,8 @@ public class NaivePattern {
     }
 
     public static void main(String args[]) {
-        String s = "AAAAAA";
-        String pat = "AAA";
+        String s = "ABABCD";
+        String pat = "ABCD";
         int result = Pattern(s, pat);
         System.out.println(result);
     }
