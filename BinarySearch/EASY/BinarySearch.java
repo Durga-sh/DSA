@@ -1,8 +1,7 @@
+package BinarySearch.EASY;
 // time complexity: O(logN)
 // space complexity: O(1)
 import java.util.*;
-import java.io.*;
-
 public class BinarySearch {
     public static int binarySearch(int[] arr, int target){
         int low=0, high = arr.length - 1;

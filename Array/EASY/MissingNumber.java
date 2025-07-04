@@ -1,4 +1,4 @@
-import java.util.Arrays;
+package Array.EASY;
 
 public class MissingNumber {
     public static int findMissing(int[] arr , int n  ) {
