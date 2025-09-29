@@ -1,11 +1,8 @@
-package Array.EASY;
+package BasicMath;
 
 public class DigitCounter {
-    public static int countDigits(int n) {
-        // Special case for 0
-        if (n == 0) {
-            return 1;
-        }
+    public static int countDigits(int n){
+
         // Make n positive if it's negative
         n = Math.abs(n);
         int count = 0;

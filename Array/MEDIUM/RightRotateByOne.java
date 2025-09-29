@@ -3,16 +3,16 @@ package Array.MEDIUM;
 
 public class RightRotateByOne {
 
-    public static void leftRotateByOne(int arr[]) {
+    public static void rightRotateByOne(int arr[]) {
         int n = arr.length;
         if (n == 0)
             return; // Edge case: empty array
 
-        int last = arr[n-1]; // Store the last element
+        int last = arr[n - 1]; // Store the last element
 
         // Shift all elements to the left by one
         for (int i = n - 2; i >= 0; i--) {
-            arr[i+1] = arr[i];
+            arr[i + 1] = arr[i];
         }
 
         arr[0] = last; // Place the first element at the end
@@ -31,9 +31,9 @@ public class RightRotateByOne {
         System.out.println("Original Array:");
         printArray(arr);
 
-        leftRotateByOne(arr);
+        rightRotateByOne(arr);
 
-        System.out.println("Array after Left Rotation by One:");
+        System.out.println("Array after Right Rotation by One:");
         printArray(arr);
     }
 }

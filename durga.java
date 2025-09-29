@@ -1,6 +1,8 @@
 // Time Complexity: O(n/2) = O(n)
 // Space Complexity: O(1)
 
+import org.w3c.dom.Node;
+
 public class durga{
     public static void main(String[] args){
         int[] arr = {1, 2, 3, 2,1};
