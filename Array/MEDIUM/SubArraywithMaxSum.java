@@ -1,45 +1,42 @@
 package Array.MEDIUM;
-import java.util.Arrays;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class SubArraywithMaxSum {
 
-    // Variables to track subarray indices
-    private int start = 0;
-    private int end = 0;
+    public int longestSubarray(int[] arr, int k) {
+        Map<Integer, Integer> map = new HashMap<>(); // stores prefixSum -> first index
+        int sum = 0, maxLen = 0;
 
-    public int maxSubArray(int[] arr) {
-        int sum = 0;
-        int n = arr.length;
-        int maxi = Integer.MIN_VALUE;
-        int tempStart = 0;
+        for (int i = 0; i < arr.length; i++) {
+            sum += arr[i];
 
-        for (int i = 0; i < n; i++) {
-            if (sum == 0) {
-              tempStart = i;  
+            // Case 1: subarray from start (0...i)
+            if (sum == k) {
+                maxLen = i + 1;
             }
-            sum += arr[i]; 
-            if (sum > maxi) {
-                maxi = sum;
-                start = tempStart;
-                end = i;
+
+            // Case 2: subarray in between (check if sum-k was seen before)
+            if (map.containsKey(sum - k)) {
+                maxLen = Math.max(maxLen, i - map.get(sum - k));
             }
-            if (sum < 0) {
-                sum = 0;
+
+            // store prefix sum only if it's not already stored (keep earliest index)
+            if (!map.containsKey(sum)) {
+                map.put(sum, i);
             }
         }
-
-        return maxi;
+        return maxLen;
     }
 
-    public static void main(String[] args) {
-        SubArraywithMaxSum sol = new SubArraywithMaxSum();
+    public static void main(String args[]) {
+        LongestSubArrayWithGivenSum s = new LongestSubArrayWithGivenSum();
 
-        int[] nums = { -2, -3, 4, -1, -2, 1, 5, -3 };
+        int num1[] = { 10, 5, 2, 7, 1, 10 };
+        System.out.println(s.longestSubarray(num1, 15)); // ✅ 4 (subarray [5,2,7,1])
 
-        int maxSum = sol.maxSubArray(nums);
-        int[] subarray = Arrays.copyOfRange(nums, sol.start, sol.end + 1);
-
-        System.out.println("Maximum Subarray Sum: " + maxSum);
-        System.out.println("Subarray with Maximum Sum: " + Arrays.toString(subarray));
+        int num2[] = { 5, -2, 3, -1, 2 };
+        System.out.println(s.longestSubarray(num2, 5)); // ✅ 4 (subarray [5,-2,3,-1])
     }
 }
